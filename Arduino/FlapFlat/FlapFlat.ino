@@ -14,13 +14,11 @@
     2022-03-15  : Add options for relays that expect LOW t be turned on, add comments/testing results.
     2022-03-16  : Remove hardcoded start position for servo when powered up.  Move user selectable options to their own config file.  Add toggle for servo direction
     2022-03-16  : Clean up these comments, no change to functionality
+    2022-04-21  : Remove SERVOREVERSE. Servo direction now determined automatically. User will still need to make sure servo positions as correct.
 
   Stuff you should do before uploading:
-    * Check out Globals.h  There are several #define at the top with decisions you need to make.
-    * Make sure you know if your relay expects LOW or HIGH to be turned on, and make the appropriate selection in Globals.h
-
-  Notes:
-    Be sure to check configurable options in Config.h
+    * Check out Config.h  There are several #define at the top with decisions you need to make.
+    * Make sure you know if your relay expects LOW or HIGH to be turned on, and make the appropriate selection in Config.h
     
 */
 
@@ -46,9 +44,14 @@ void setup() {
     relayOff = 1;
   #endif    
 
-  #ifdef SERVOREVERSE
+  if (openPos > closedPos)
+  {
     servoDirection = -1;
-  #endif    
+  }
+  else
+  {
+    servoDirection = 1;
+  }  
 
   pinMode(lightPin,OUTPUT);
   digitalWrite(lightPin, relayOff);

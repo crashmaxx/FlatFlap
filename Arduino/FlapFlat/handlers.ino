@@ -10,6 +10,10 @@ void handleServo()
         }
       motorDirection = NONE;
       coverStatus = COVERCLOSED;
+      
+      #ifdef DEBUG
+        Serial.println("\nCover Closed");
+      #endif
     }
   else if (currentpos > (servoDirection * targetpos) && motorDirection == OPENING) 
     {
@@ -21,6 +25,10 @@ void handleServo()
         }
       motorDirection = NONE;
       coverStatus = COVEROPEN;
+      
+      #ifdef DEBUG
+        Serial.println("\nCover Open");
+      #endif
     }
 }
 
@@ -29,9 +37,6 @@ void handleSerial() {
   if ( Serial.available() >= 5 ) { 
     char* cmd;
     char* data;
-
-
-    // int len = 0;
 
     char str[20];
     memset(str, 0, 20);

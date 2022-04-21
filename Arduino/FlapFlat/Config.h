@@ -1,7 +1,5 @@
 // #define DEBUG              // Uncomment to allow debug printout to serial
 
-// #define SERVOREVERSE       // Uncomment this to reverse the direction the servo moves, in case you have some fancy left handed Lithuanian servo
-
 // #define RELAYLOW           // Uncomment this line if your relay turns on with the signal pin driven LOW
 
 #define CALIBRATOR            // Comment this line to return "NotPresent" to ASCOM for light/calibrator
@@ -12,8 +10,7 @@ int openPos = 0;              // The servo position for the flap to be open.
                               // USUALLY this is 0, and a move to close (based on the printed servo mount and arrangement)
                               // is positive, so you start at 0, mount the to the servo at a position that represents "Open"
                               // and tweak closedPos for a good fit.  However, if your servo runs the other way
-                              // or you've engineered your own mount, you may want to uncomment SERVOREVERSE above, and
-                              // flip this logic.
+                              // or you've engineered your own mount, you may need to switch this postion with closePos
 
 int servoPin = 5;             // The pin the data line of the servo is attached to.
 
