@@ -10,13 +10,6 @@ int servoDirection = 1;       // Used to change direction of the servo.  DO NOT 
 String strCmd;                // holds the command sent via serial
 char response[50];
 
-
-    
-enum coverRequests {
-  COVCLOSE,
-  COVOPEN
-};
-
 enum coverStatuses {        // Mirror ASCOM CoverStatus Enum
   COVERNOTPRESENT = 0,
   COVERCLOSED,
@@ -26,13 +19,8 @@ enum coverStatuses {        // Mirror ASCOM CoverStatus Enum
   COVERERROR
 };
 
-enum lightRequests {
-  LIGHTOFF,
-  LIGHTON
-};
-
 enum lightStatuses {        // Mirror ASCOM CalibratorStatus Enum
-  CALUBRATORNOTPRESENT = 0,
+  CALIBRATORNOTPRESENT = 0,
   CALIBRATOROFF,
   CALIBRATORNOTREADY,
   CALIBRATORREADY,    // On
@@ -53,8 +41,8 @@ enum errorStatuses {
 
 
 int coverStatus = COVERCLOSED;
-int lightStatus = CALUBRATORNOTPRESENT;
+int lightStatus = CALIBRATORNOTPRESENT;
 int motorDirection = NONE;
 int errorStatus = NORMAL;
-int coverReq = COVCLOSE;
-int lightReq = LIGHTOFF;
+int coverReq = COVERCLOSED;
+int lightReq = CALIBRATOROFF;
